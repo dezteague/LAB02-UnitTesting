@@ -19,18 +19,27 @@ namespace Lab02UnitTesting
                 string operation = Console.ReadLine();
                 int userInput = Convert.ToInt32(operation);
 
+                //decimal amount;
+
                 switch (userInput)
                 {
                     case 1:
                         Console.WriteLine("Enter desposit amount:");
+                        string deposit = Console.ReadLine();
+                        decimal userDeposit = Convert.ToInt32(deposit);
                         break;
                     case 2:
                         Console.WriteLine("Enter withdrawal amount:");
+                        string withdrawal = Console.ReadLine();
+                        decimal userWithdrawal = Convert.ToInt32(withdrawal);
                         break;
                     case 3:
                         Console.WriteLine("Your balance is");
                         break;
                 }
+
+                Console.WriteLine("Would you like to make another transaction?");
+                Console.WriteLine("y/n");
             }
         }
     }
