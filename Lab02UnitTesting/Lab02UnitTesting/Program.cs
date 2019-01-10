@@ -17,7 +17,8 @@ namespace Lab02UnitTesting
             //while loop allows the user interface to run until the user exits
             while (action)
             {
-                Console.WriteLine("Select one of the following actions. Enter 1/2/3/4");
+                Console.WriteLine("");
+                Console.WriteLine("Please select one of the following actions. Enter 1/2/3/4");
                 Console.WriteLine("1. Deposit");
                 Console.WriteLine("2. Withdraw");
                 Console.WriteLine("3. My Balance");
@@ -33,20 +34,23 @@ namespace Lab02UnitTesting
                         Console.WriteLine("Enter deposit amount:");
                         string deposit = Console.ReadLine();
                         decimal userDeposit = Convert.ToInt32(deposit);
-                        Console.WriteLine($"Your deposit was successful, your new balance is {Deposit((decimal)userDeposit)}");
+                        Deposit(userDeposit);
+                        Console.WriteLine($"Your deposit was successful, your new balance is {balance}");
                         break;
                     case 2:
                         Console.WriteLine("Enter withdrawal amount:");
                         string withdrawal = Console.ReadLine();
                         decimal userWithdrawal = Convert.ToInt32(withdrawal);
-                        if (Withdraw((decimal)userWithdrawal) == 0)
+                        decimal wdMethod = Withdraw(userWithdrawal);
+                        if (wdMethod == 0)
                         {
                             Console.WriteLine($"Sorry, you have insufficient funds, your balance is {balance}");
                             break;
                         }
                         else
                         {
-                            Console.WriteLine($"Your withdrawal was successful, your new balance is {Withdraw((decimal)userWithdrawal)}");
+                            Withdraw(userWithdrawal);
+                            Console.WriteLine($"Your withdrawal was successful, your new balance is {balance}");
                             break;
                         }
                     case 3:
@@ -60,9 +64,6 @@ namespace Lab02UnitTesting
                         Console.WriteLine("Sorry, invalid action");
                         break;
                 }
-                 
-                Console.WriteLine("Would you like to make another transaction?");
-                Console.WriteLine("y/n");
             }
         }
 
