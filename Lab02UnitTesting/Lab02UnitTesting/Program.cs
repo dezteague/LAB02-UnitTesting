@@ -33,13 +33,22 @@ namespace Lab02UnitTesting
                         Console.WriteLine("Enter deposit amount:");
                         string deposit = Console.ReadLine();
                         decimal userDeposit = Convert.ToInt32(deposit);
-                        Console.WriteLine($"Your deposit was successful, your new balance is {Deposit(userDeposit)}");
+                        Console.WriteLine($"Your deposit was successful, your new balance is {Deposit((decimal)userDeposit)}");
                         break;
                     case 2:
                         Console.WriteLine("Enter withdrawal amount:");
                         string withdrawal = Console.ReadLine();
                         decimal userWithdrawal = Convert.ToInt32(withdrawal);
-                        break;
+                        if (Withdraw((decimal)userWithdrawal) == 0)
+                        {
+                            Console.WriteLine($"Sorry, you have insufficient funds, your balance is {balance}");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Your withdrawal was successful, your new balance is {Withdraw((decimal)userWithdrawal)}");
+                            break;
+                        }
                     case 3:
                         Console.WriteLine("Your balance is");
                         break;
@@ -61,6 +70,24 @@ namespace Lab02UnitTesting
         {
             //+= allows the initial balance to keep adding values
             balance += value;
+            return balance;
+        }
+
+        static decimal Withdraw(decimal value)
+        {
+            if (value <= balance)
+            {
+                balance -= value;
+                return balance;
+            }
+            else
+            {
+                return 0;
+            }      
+        }
+
+        static decimal CurrentBalance()
+        {
             return balance;
         }
     }
