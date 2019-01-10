@@ -2,7 +2,7 @@
 
 namespace Lab02UnitTesting
 {
-    class Program
+    public class Program
     {
         //initial balance
         public static decimal balance = 0;
@@ -67,14 +67,14 @@ namespace Lab02UnitTesting
             }
         }
 
-        static decimal Deposit(decimal value)
+        public static decimal Deposit(decimal value)
         {
             //+= allows the initial balance to keep adding values
             balance += value;
             return balance;
         }
 
-        static decimal Withdraw(decimal value)
+        public static decimal Withdraw(decimal value)
         {
             if (value <= balance)
             {
@@ -87,7 +87,7 @@ namespace Lab02UnitTesting
             }      
         }
 
-        static decimal CurrentBalance()
+        public static decimal CurrentBalance()
         {
             return balance;
         }
