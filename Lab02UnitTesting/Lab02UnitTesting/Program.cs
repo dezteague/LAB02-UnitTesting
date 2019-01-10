@@ -23,28 +23,32 @@ namespace Lab02UnitTesting
                 Console.WriteLine("2. Withdraw");
                 Console.WriteLine("3. My Balance");
                 Console.WriteLine("4. Exit");
-                string operation = Console.ReadLine();
-                int userInput = Convert.ToInt32(operation);
-
-                //decimal amount;
+                //convert user selection string into an integer
+                string transaction = Console.ReadLine();
+                int userInput = Convert.ToInt32(transaction);
 
                 switch (userInput)
                 {
+                    //for all switch cases, convert user string into a decimal type
                     case 1:
                         Console.WriteLine("Enter deposit amount:");
                         string deposit = Console.ReadLine();
                         decimal userDeposit = Convert.ToInt32(deposit);
+                        //invoke the deposit method
                         Deposit(userDeposit);
+                        //use string interpolation to print balance after deposit
                         Console.WriteLine($"Your deposit was successful, your new balance is {balance}");
                         break;
                     case 2:
                         Console.WriteLine("Enter withdrawal amount:");
                         string withdrawal = Console.ReadLine();
                         decimal userWithdrawal = Convert.ToInt32(withdrawal);
+                        //when the withdraw method is invoked, the new variable (wdMethod) will be used in conditional
+                        //if statement does not allow user to withdraw more than balance (refer to withdraw method, line 81)
                         decimal wdMethod = Withdraw(userWithdrawal);
                         if (wdMethod == 0)
                         {
-                            Console.WriteLine($"Sorry, you have insufficient funds, your balance is {balance}");
+                            Console.WriteLine($"Sorry, invalid transaction. Withdrawal must not exceed {balance}");
                             break;
                         }
                         else
@@ -54,12 +58,14 @@ namespace Lab02UnitTesting
                             break;
                         }
                     case 3:
+                        //prints balance 
                         Console.WriteLine($"Your balance is {CurrentBalance()}");
                         break;
                     //when the action is false, break out of the loop
                     case 4:
                         action = false;
                         break;
+                    //if the user inputs anything other than what's provided in switch cases, default will run
                     default:
                         Console.WriteLine("Sorry, invalid action");
                         break;
@@ -76,6 +82,7 @@ namespace Lab02UnitTesting
 
         public static decimal Withdraw(decimal value)
         {
+            //-= allows the user to make withdrawals as long as the quantity does not exceed the balance
             if (value <= balance)
             {
                 balance -= value;
