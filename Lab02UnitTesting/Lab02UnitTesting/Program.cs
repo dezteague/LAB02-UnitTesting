@@ -33,6 +33,7 @@ namespace Lab02UnitTesting
                         Console.WriteLine("Enter deposit amount:");
                         string deposit = Console.ReadLine();
                         decimal userDeposit = Convert.ToInt32(deposit);
+                        Console.WriteLine($"Your deposit was successful, your new balance is {Deposit(userDeposit)}");
                         break;
                     case 2:
                         Console.WriteLine("Enter withdrawal amount:");
@@ -42,11 +43,25 @@ namespace Lab02UnitTesting
                     case 3:
                         Console.WriteLine("Your balance is");
                         break;
+                    //when the action is false, break out of the loop
+                    case 4:
+                        action = false;
+                        break;
+                    default:
+                        Console.WriteLine("Sorry, invalid action");
+                        break;
                 }
                  
                 Console.WriteLine("Would you like to make another transaction?");
                 Console.WriteLine("y/n");
             }
+        }
+
+        static decimal Deposit(decimal value)
+        {
+            //+= allows the initial balance to keep adding values
+            balance += value;
+            return balance;
         }
     }
 }
