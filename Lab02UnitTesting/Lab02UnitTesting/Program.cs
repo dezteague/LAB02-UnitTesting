@@ -50,7 +50,7 @@ namespace Lab02UnitTesting
                             break;
                         }
                     case 3:
-                        Console.WriteLine("Your balance is");
+                        Console.WriteLine($"Your balance is {CurrentBalance()}");
                         break;
                     //when the action is false, break out of the loop
                     case 4:
