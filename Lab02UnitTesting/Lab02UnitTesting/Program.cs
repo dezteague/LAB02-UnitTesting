@@ -4,14 +4,20 @@ namespace Lab02UnitTesting
 {
     class Program
     {
+        //initial balance
+        public static decimal balance = 0;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Teague Bank!");
 
+            //boolean sets the initial condition for the while loop
             bool action = true;
+
+            //while loop allows the user interface to run until the user exits
             while (action)
             {
-                Console.WriteLine("Select on of the following actions. Enter (1,2,3,4)");
+                Console.WriteLine("Select one of the following actions. Enter 1/2/3/4");
                 Console.WriteLine("1. Deposit");
                 Console.WriteLine("2. Withdraw");
                 Console.WriteLine("3. My Balance");
@@ -24,7 +30,7 @@ namespace Lab02UnitTesting
                 switch (userInput)
                 {
                     case 1:
-                        Console.WriteLine("Enter desposit amount:");
+                        Console.WriteLine("Enter deposit amount:");
                         string deposit = Console.ReadLine();
                         decimal userDeposit = Convert.ToInt32(deposit);
                         break;
@@ -37,7 +43,7 @@ namespace Lab02UnitTesting
                         Console.WriteLine("Your balance is");
                         break;
                 }
-
+                 
                 Console.WriteLine("Would you like to make another transaction?");
                 Console.WriteLine("y/n");
             }
