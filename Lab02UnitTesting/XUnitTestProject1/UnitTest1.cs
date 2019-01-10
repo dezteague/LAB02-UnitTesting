@@ -25,5 +25,12 @@ namespace XUnitTestProject1
             Program.balance = 1000;
             Assert.Equal(result, Program.Withdraw(userWithdrawal));
         }
+
+        [Fact]
+        public void CanFindBalanceTest()
+        {
+            Program.balance = 50;
+            Assert.Equal(50, Program.balance);
+        }
     }
 }
