@@ -109,9 +109,9 @@ namespace Lab02UnitTesting
                 }
                 else
                 {
-                    Console.WriteLine("You may not enter values below 0");
+                return 0;
                 }
-            return 0;
+           
             //}
             //catch(Exception e)
             //{
