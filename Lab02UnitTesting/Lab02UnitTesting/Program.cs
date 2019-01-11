@@ -99,8 +99,8 @@ namespace Lab02UnitTesting
 
         public static decimal Deposit(decimal value)
         {
-            //try
-            //{
+            try
+            {
                 //+= allows the initial balance to keep adding values
                 if (value > 0)
                 {
@@ -111,12 +111,17 @@ namespace Lab02UnitTesting
                 {
                 return 0;
                 }
-           
-            //}
-            //catch(Exception e)
-            //{
-            //    throw;
-            //}
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
+                throw;
+            }
+            finally
+            {
+                Console.WriteLine("Thanks for banking with Teague");
+            }
         }
 
         public static decimal Withdraw(decimal value)
@@ -129,19 +134,20 @@ namespace Lab02UnitTesting
                     balance -= value;
                     return balance;
                 }
-                //else if (value <= balance)
-                //{
-                //    balance -= value;
-                //    return balance;
-                //}
+    
                 else
                 {
                     return 0;
                 }      
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                Console.WriteLine($"Error: {e.Message}");
                 throw;
+            }
+            finally
+            {
+                Console.WriteLine("Thanks for banking with Teague");
             }
         }
 
@@ -151,9 +157,14 @@ namespace Lab02UnitTesting
             {
                 return balance;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
+                Console.WriteLine($"Error: {e.Message}");
                 throw;
+            }
+            finally
+            {
+                Console.WriteLine("Thanks for banking with Teague");
             }
         }
     }
