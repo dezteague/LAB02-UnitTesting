@@ -36,10 +36,18 @@ namespace Lab02UnitTesting
                             string deposit = Console.ReadLine();
                             decimal userDeposit = Convert.ToInt32(deposit);
                             //invoke the deposit method
-                            Deposit(userDeposit);
-                            //use string interpolation to print balance after deposit
-                            Console.WriteLine($"Your deposit was successful, your new balance is {balance}");
-                            break;
+                            decimal dpMethod = Deposit(userDeposit);
+                            if (dpMethod > 0)
+                            {
+                                //use string interpolation to print balance after deposit
+                                Console.WriteLine($"Your deposit was successful, your new balance is {balance}");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Sorry, invalid transaction.  Value must be more than 0");
+                                break;
+                            }
                         case 2:
                             Console.WriteLine("Enter withdrawal amount:");
                             string withdrawal = Console.ReadLine();
@@ -49,7 +57,13 @@ namespace Lab02UnitTesting
                             decimal wdMethod = Withdraw(userWithdrawal);
                             if (wdMethod == 0)
                             {
-                                Console.WriteLine($"Sorry, invalid transaction. Withdrawal must not exceed {balance}");
+                                //this code prevents the user from using negative numbers
+                                Console.WriteLine($"Sorry, invalid transaction.");
+                                break;
+                            }
+                            else if (wdMethod < 0)
+                            {
+                                Console.WriteLine($"Your withdrawal was successful, your new balance is {balance}");
                                 break;
                             }
                             else
@@ -57,6 +71,7 @@ namespace Lab02UnitTesting
                                 Console.WriteLine($"Your withdrawal was successful, your new balance is {balance}");
                                 break;
                             }
+                            
                         case 3:
                             //prints balance 
                             Console.WriteLine($"Your balance is {CurrentBalance()}");
@@ -84,16 +99,24 @@ namespace Lab02UnitTesting
 
         public static decimal Deposit(decimal value)
         {
-            try
-            {
+            //try
+            //{
                 //+= allows the initial balance to keep adding values
-                balance += value;
-                return balance;
-            }
-            catch(Exception e)
-            {
-                throw;
-            }
+                if (value > 0)
+                {
+                    balance += value;
+                    return balance;
+                }
+                else
+                {
+                    Console.WriteLine("You may not enter values below 0");
+                }
+            return 0;
+            //}
+            //catch(Exception e)
+            //{
+            //    throw;
+            //}
         }
 
         public static decimal Withdraw(decimal value)
@@ -101,11 +124,16 @@ namespace Lab02UnitTesting
             try
             {
                 //-= allows the user to make withdrawals as long as the quantity does not exceed the balance
-                if (value <= balance)
+                if (value > 0 && value <= balance)
                 {
                     balance -= value;
                     return balance;
                 }
+                //else if (value <= balance)
+                //{
+                //    balance -= value;
+                //    return balance;
+                //}
                 else
                 {
                     return 0;
