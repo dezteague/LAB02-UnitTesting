@@ -54,7 +54,6 @@ namespace Lab02UnitTesting
                             }
                             else
                             {
-                                Withdraw(userWithdrawal);
                                 Console.WriteLine($"Your withdrawal was successful, your new balance is {balance}");
                                 break;
                             }
